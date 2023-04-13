@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicker Game</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div class="user">
+    <div class="user-container">
+      <div class="block">
+        <section class="block__item block-item">
+          <h2 class="block-item__title">
+            Do you have an account?</h2>
+          <button class="block-item__btn signIn-btn">Sing In</button>
+        </section>
+        <section class="block__item block-item">
+          <h2 class="block-item__title">
+            Don't have an account?</h2>
+          <button class="block-item__btn signUp-btn">Registration
+          </button>
+        </section>
+        <div class="form-box">
+          <!-- form log in -->
+          <form action="#" class="form signIn-form ">
+            <h2 class="form__title ">Sing in to account</h2>
+            <label for="">
+              <input class="form__input " type="email" name="email" placeholder="email">
+            </label>
+            <label for="">
+              <input class="form__input " type="password" name="password" placeholder="password">
+            </label>
+            <button class="form__btn" type="submit">Sing In</button>
+          </form>
+
+          <!-- form registration -->
+          <form action="#" class="form signUp-form ">
+            <h2 class="form__title">Registration</h2>
+            <label for=""> <input class="form__input" type="text" name="nick-name" placeholder="nick name">
+            </label> <label for="">
+              <input class="form__input " type="email" name="email" placeholder="email">
+            </label>
+            <label for="">
+              <input class="form__input " type="password" name="password" placeholder="password">
+            </label>
+
+            <button class="form__btn" type="submit">Sign Up </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/index.js" type="module"></script>
+</body>
+
+</html>

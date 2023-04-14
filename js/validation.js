@@ -9,6 +9,6 @@ export const emailValid = (value) => {
 }
 
 export const passwordValid = (value) => {
-  let re = /(?=^.{5,8}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])/
+  let re = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,256}$/
   return re.test(String(value))
 }

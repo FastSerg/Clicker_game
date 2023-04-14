@@ -58,13 +58,15 @@ const showWindow = (data, key) => {
   const container = document.querySelector('.container')
   const hegoesCois = document.querySelector('.game-info__coins')
   const hegoesLevel = document.querySelector('.game-info__level')
-  removeElement(container)
+
+
 
   modal.classList.add('active')
   modalContent.classList.add('active')
   title.textContent = `Winner`
   messageText.textContent = `Your shots: ${data.shots}`
   btnRestart.textContent = `RESTART`
+  removeElement(container)
 
   btnRestart.addEventListener('click', () => {
     modal.classList.remove('active')
@@ -72,6 +74,7 @@ const showWindow = (data, key) => {
     data.shots = 0
     data.level = 1
     removePlayer(key)
+
     createHegoes()
     updateElement(hegoesLevel, `Level:  ${data.level}`)
     updateElement(hegoesCois, `Your shots: ${data.shots}`)

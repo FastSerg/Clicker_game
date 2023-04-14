@@ -19,7 +19,6 @@ export const getUserById = id => {
 
 export const saveUsers = (id, data) => {
   const users = getAllUsers()
-  console.log('users', users)
 
   if (!users[id]) {
     users[id] = data;

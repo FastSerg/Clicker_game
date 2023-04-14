@@ -42,7 +42,6 @@ const heroesLife = (data, indicatorLife) => {
   if (data.health === 0) indicatorLife.width = 100
 
   indicate.style.width = (data.health * 100 / indicatorLife.life) + '%'
-
 }
 
 
@@ -84,7 +83,6 @@ export const hegoesBattle = (data, key) => {
   const hegoesCois = document.querySelector('.game-info__coins')
   const hegoesLevel = document.querySelector('.game-info__level')
   const currentInfoUser = getPlayersById(key)
-  console.log('data, key', data, key)
   let isChecked = true
   let indicatorLife = { width: 100, life: null }
 
@@ -110,7 +108,6 @@ export const hegoesBattle = (data, key) => {
     if (data.health >= 1) {
 
       let isShotMiss = miss()
-      console.log('shoot', isShotMiss)
 
       data.health -= isShotMiss
       updateElement(hegoesHealth, `HP: ${data.health}`)
@@ -133,13 +130,11 @@ export const hegoesBattle = (data, key) => {
       })
 
       data.level += 1
-      console.log('data', data)
       updateElement(hegoesLevel, `Level:  ${data.level}`)
 
       data.health = Math.floor(Math.random() * (6 * data.level)) + 4 * data.level
       updateElement(hegoesHealth, `HP: ${data.health}`)
 
-      console.log('level', data.level)
       updateBackground(data.level)
 
       indicatorLife.life = data.health
@@ -147,9 +142,7 @@ export const hegoesBattle = (data, key) => {
     }
 
     if (data.health == 0 && data.level == MAX_LEVEL) {
-      console.log(`you win your shots: ${data.shots}`)
       showWindow(data, key)
-
     }
 
   })

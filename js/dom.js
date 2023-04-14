@@ -41,7 +41,7 @@ export const createHeader = (data) => {
 
 
 export const createHegoes = () => {
-  document.body.style.cssText = `background-image: url(../image/bg_field_1.jpg); transition: 0.7s;`
+  document.body.style.cssText = `background-image: url(image/bg_field_1.jpg); transition: 0.7s;`
 
   const container = document.createElement("div")
   container.classList.add('container')

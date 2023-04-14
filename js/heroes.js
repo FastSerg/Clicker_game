@@ -13,21 +13,25 @@ export const removeElement = (element) => {
 const updateBackground = (currentLevel) => {
   const heroes = document.querySelector('.hit__img')
   if (currentLevel === 1) {
-    document.body.style.cssText = `background-image: url(../image/bg_field_1.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_1.jpg); transition: 0.7s;`
     heroes.setAttribute('src', 'image/heroes_1.png')
+    heroes.setAttribute('alt', 'heroes_1.jpg')
   } else if (currentLevel === 2) {
-    document.body.style.cssText = `background-image: url(../image/bg_field_2.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_2.jpg); transition: 0.7s;`
     heroes.setAttribute('src', 'image/heroes_2.png')
+    heroes.setAttribute('alt', 'heroes_2.jpg')
   } else if (currentLevel === 3) {
-    document.body.style.cssText = `background-image: url(../image/bg_field_3.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_3.jpg); transition: 0.7s;`
     heroes.setAttribute('src', 'image/heroes_3.png')
     heroes.setAttribute('alt', 'heroes_3.jpg')
   } else if (currentLevel === 4) {
-    document.body.style.cssText = `background-image: url(../image/bg_field_4.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_4.jpg); transition: 0.7s;`
     heroes.setAttribute('src', 'image/heroes_4.png')
+    heroes.setAttribute('alt', 'heroes_4.jpg')
   } else if (currentLevel === 5) {
-    document.body.style.cssText = `background-image: url(../image/bg_field_5.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_5.jpg); transition: 0.7s;`
     heroes.setAttribute('src', 'image/heroes_5.png')
+    heroes.setAttribute('alt', 'heroes_5.jpg')
   }
 }
 

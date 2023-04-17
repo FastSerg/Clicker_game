@@ -24,6 +24,7 @@ body {
   left: 0;
   right: 0;  
   width: 100%;
+  background: #f9f9f961;
 }
 
 .container {
@@ -43,8 +44,7 @@ body {
   align-items: center;
   justify-content: space-around;
   width:100%;
-  user-select: none;  
-  background: #f9f9f961;
+  user-select: none;   
 }
 
 .game-info__wraper{
@@ -102,14 +102,12 @@ body {
 .block.form-active {
   background-color: rgba(47, 43, 35, 0.902);
 } 
-
-.block-item {
-  text-align: center;
-}
+ 
 
 .block__item {
   width: 50%;
   user-select: none;
+  text-align: center;
 }
 
 .block-item__title {
@@ -118,6 +116,7 @@ body {
   letter-spacing: calc(var(--index)*0.09);
   color:var(--text-color);
   margin-bottom: 10px;
+  transition: all 1s;
 }
 
 .block-item__btn {
@@ -130,8 +129,12 @@ body {
   letter-spacing: calc(var(--index)*0.09); 
   box-shadow: -2px 1px 13px -1px rgb(138,142,151);
   border-radius:15px;
+  transition: all 1s;
 }
 
+.block-item__btn:hover {
+  transform: scale(1.1);
+}
 
 .form-box {
   height: 100%;
@@ -160,6 +163,7 @@ body {
   position: absolute;
   transition: 0.5s ease-in-out;
   letter-spacing: calc(var(--index) * 0.07);
+  user-select: none;
 }
 
 .form input {
@@ -212,24 +216,31 @@ body {
   margin-top: 15px;
   margin-bottom: 10px;
   padding: 5px 15px;
- 
+  transition: all 1s;
+}
+
+.form__btn:hover {
+  transform: scale(1.1);
 }
 
 .error {
   border:2px solid red;
 }
 
- 
-.hit {
+.signUp-form label {
+  display: flex;
+  gap:7px;
+  position: relative;
+}
 
+.hit {
   min-height: 100vh;
   width: 100%; 
   user-select: none;   
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  
+  align-items: center; 
 }
 
 .hit__img__wraper  { 
@@ -237,7 +248,6 @@ body {
   margin-top: calc(var(--index)*6);
   animation: moveHeroes 1s alternate-reverse infinite;
 }
-
 
 .hit__img {
   width: calc(var(--index)*15);
@@ -360,8 +370,13 @@ body {
   color:antiquewhite;
   transition: all 1s;
   cursor: pointer;
+  transition: all 1s;
 }
 
+.btn-restart:hover {
+
+  transform: scale(1.1);
+}
 
 @keyframes moveHeroes {
   0%{

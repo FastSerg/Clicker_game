@@ -2,6 +2,7 @@ import { MAX_LEVEL } from "./constant.js";
 import { saveScore, getPlayersById, removePlayer, } from "./db.js"
 import { creatMiss, createHeader, createHegoes, createModalWindow, } from './dom.js'
 
+
 const updateElement = (element, updateValue) => {
   element.textContent = updateValue;
 }
@@ -12,7 +13,7 @@ export const removeElement = (element) => {
 
 const updateBackground = (currentLevel) => {
   const heroes = document.querySelector('.hit__img')
-  if (currentLevel === 1) {
+  if (currentLevel === 1 || currentLevel === 0) {
     document.body.style.cssText = `background-image: url(image/bg_field_1.jpg); transition: 0.7s;`
     heroes.setAttribute('src', 'image/heroes_1.png')
     heroes.setAttribute('alt', 'heroes_1.jpg')
@@ -55,30 +56,24 @@ const showWindow = (data, key) => {
   const title = document.querySelector('.content-message__title')
   const messageText = document.querySelector('.content-message__text')
   const btnRestart = document.querySelector('.btn-restart')
+  const hit = document.querySelector('.hit')
   const container = document.querySelector('.container')
-  const hegoesCois = document.querySelector('.game-info__coins')
-  const hegoesLevel = document.querySelector('.game-info__level')
-
-
 
   modal.classList.add('active')
   modalContent.classList.add('active')
   title.textContent = `Winner`
   messageText.textContent = `Your shots: ${data.shots}`
   btnRestart.textContent = `RESTART`
-  removeElement(container)
+
+  hit.style.display = 'none'
+  container.style.display = 'none'
 
   btnRestart.addEventListener('click', () => {
     modal.classList.remove('active')
     modalContent.classList.remove('active')
-    data.shots = 0
-    data.level = 1
     removePlayer(key)
-
-    createHegoes()
-    updateElement(hegoesLevel, `Level:  ${data.level}`)
-    updateElement(hegoesCois, `Your shots: ${data.shots}`)
-    hegoesBattle(data, key)
+    hit.style.display = 'flex'
+    container.style.display = 'block'
   })
 
 }
@@ -102,7 +97,7 @@ export const hegoesBattle = (data, key) => {
     data.level = currentInfoUser.level
     data.shots = currentInfoUser.shots
   }
-
+  console.log('before')
   // проверка здоровья, когда оно равно 0 генерируется новое здоровье и обновляется значение на экране
   if (!data.health) {
     data.health = Math.floor(Math.random() * (8 * data.level)) + 4 * data.level
@@ -141,15 +136,28 @@ export const hegoesBattle = (data, key) => {
 
       data.health = Math.floor(Math.random() * (6 * data.level)) + 4 * data.level
       updateElement(hegoesHealth, `HP: ${data.health}`)
-
       updateBackground(data.level)
 
       indicatorLife.life = data.health
       heroesLife(data, indicatorLife)
     }
 
-    if (data.health == 0 && data.level == MAX_LEVEL) {
+    let endGame = { status: false }
+    if (data.health === 0 && data.level === MAX_LEVEL) {
       showWindow(data, key)
+      data.level = 1
+      data.shots = 0
+      data.health = Math.floor(Math.random() * (6 * data.level)) + 4 * data.level
+      indicatorLife.life = data.health
+      endGame.status = true
+    }
+
+    if (endGame.status) {
+      heroesLife(data, indicatorLife)
+      updateElement(hegoesHealth, `HP: ${data.health}`)
+      updateBackground(data.level)
+      updateElement(hegoesLevel, `Level:  ${data.level}`)
+      updateElement(hegoesCois, `Your shots: ${data.shots}`)
     }
 
   })
@@ -161,5 +169,7 @@ export const init = (data, key) => {
   createHegoes()
   createModalWindow()
   hegoesBattle(data, key)
+  console.log('init')
+
 }
 

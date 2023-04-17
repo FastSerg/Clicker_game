@@ -1,7 +1,11 @@
+
 import { getUserById, saveUsers } from './db.js'
 import { emailValid, passwordValid, nickNameValid } from './validation.js'
 import { init, removeElement } from './heroes.js'
+import { CURRENT_USER } from './constant.js';
+import { createUser } from './dom.js';
 
+createUser()
 const singInBtn = document.querySelector('.signIn-btn');
 const singUpBtn = document.querySelector('.signUp-btn');
 const userForm = document.querySelector('.form-box');
@@ -21,6 +25,7 @@ const emailSignUp = signUpForm.querySelector('.form__input[name="email"]')
 
 const user = document.querySelector('.user')
 
+
 singUpBtn.addEventListener('click', () => {
   userForm.classList.add('form-active')
   block.classList.add('form-active')
@@ -34,12 +39,6 @@ singInBtn.addEventListener('click', () => {
 signInForm.onsubmit = (e) => {
   e.preventDefault()
   let emptyInputs = Array.from(inputSignIn).filter(input => input.value === '')
-  let CURRENT_USER = {
-    name: null,
-    shots: 0,
-    level: 1,
-    health: 0
-  }
 
   inputSignIn.forEach(input => {
 
@@ -97,7 +96,6 @@ signUpForm.onsubmit = (e) => {
     return false
   }
 
-
   if (!nickNameValid(nickNameSignUp.value)) {
     nickNameSignUp.classList.add('error')
     return false
@@ -105,14 +103,12 @@ signUpForm.onsubmit = (e) => {
     nickNameSignUp.classList.remove('error')
   }
 
-
   if (!emailValid(emailSignUp.value)) {
     emailSignUp.classList.add('error')
     return false
   } else {
     emailSignUp.classList.remove('error')
   }
-
 
   if (!passwordValid(passwordSignUp.value)) {
     passwordSignUp.classList.add('error')

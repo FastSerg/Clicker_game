@@ -1,41 +1,319 @@
 
+const createElement = ({ type, attrs = null, container = null, position = 'appendChild' }) => {
+  const el = document.createElement(type)
+  Object.keys(attrs).forEach(key => {
+
+    if (key !== 'innerHTML') el.setAttribute(key, attrs[key])
+    else el.innerHTML = attrs[key]
+  })
+
+  if (container && position === 'prepend') container.prepend(el)
+  if (container && position === 'appendChild') container.appendChild(el)
+
+  return el
+
+}
+
+export const createUser = () => {
+  const user = createElement({
+    type: 'div',
+    attrs: {
+      class: 'user'
+    },
+    position: 'prepend',
+    container: document.body
+  })
+  const userContainer = createElement({
+    type: 'div',
+    attrs: {
+      class: 'user-container'
+    },
+    container: user
+  })
+  const block = createElement({
+    type: 'div',
+    attrs: {
+      class: 'block'
+    },
+    container: userContainer
+  })
+
+  const blockItem = createElement({
+    type: 'section',
+    attrs: {
+      class: 'block__item'
+    },
+    container: block
+  })
+
+  createElement({
+    type: 'h2',
+    attrs: {
+      class: 'block-item__title',
+      innerHTML: 'Do you have an account?'
+    },
+    container: blockItem
+  })
+
+  createElement({
+    type: 'button',
+    attrs: {
+      class: 'block-item__btn signIn-btn',
+      innerHTML: 'Sing In'
+    },
+    container: blockItem
+  })
+
+  const blockSingUp = createElement({
+    type: 'section',
+    attrs: {
+      class: 'block__item',
+    },
+    container: block
+  })
+
+  createElement({
+    type: 'h2',
+    attrs: {
+      class: 'block-item__title',
+      innerHTML: `Don't have an account?`
+    },
+    container: blockSingUp
+  })
+
+
+  createElement({
+    type: 'button',
+    attrs: {
+      class: 'block-item__btn  signUp-btn',
+      innerHTML: 'Registration'
+    },
+    container: blockSingUp
+  })
+
+
+  const formBox = createElement({
+    type: 'div',
+    attrs: {
+      class: 'form-box',
+    },
+    container: block
+  })
+
+  const signInForm = createElement({
+    type: 'form',
+    attrs: {
+      class: 'form signIn-form',
+    },
+    container: formBox
+  })
+
+  createElement({
+    type: 'h2',
+    attrs: {
+      class: 'form__title',
+      innerHTML: 'Sing in to account'
+    },
+    container: signInForm
+  })
+
+  const signInLabelEmail = createElement({
+    type: 'label',
+    attrs: { for: '' },
+    container: signInForm
+  })
+
+  createElement({
+    type: 'input',
+    attrs: {
+      class: 'form__input',
+      type: "email",
+      name: "email",
+      placeholder: "email"
+    },
+    container: signInLabelEmail
+  })
+
+  const signInLabelPassword = createElement({
+    type: 'label',
+    attrs: { for: '' },
+    container: signInForm
+  })
+
+  createElement({
+    type: 'input',
+    attrs: {
+      class: 'form__input',
+      type: "password",
+      name: "password",
+      placeholder: "password"
+    },
+    container: signInLabelPassword
+  })
+
+  createElement({
+    type: 'button',
+    attrs: {
+      class: 'form__btn',
+      innerHTML: 'Sing In',
+      type: "submit"
+    },
+    container: signInForm
+  })
+
+  const signUpForm = createElement({
+    type: 'form',
+    attrs: {
+      class: 'form signUp-form',
+    },
+    container: formBox
+  })
+
+  createElement({
+    type: 'h2',
+    attrs: {
+      class: 'form__title',
+      innerHTML: 'Registration'
+    },
+    container: signUpForm
+  })
+
+  const signUpLabelName = createElement({
+    type: 'label',
+    attrs: { for: '' },
+    container: signUpForm
+  })
+
+  createElement({
+    type: 'input',
+    attrs: {
+      class: 'form__input',
+      type: "text",
+      name: "nick-name",
+      placeholder: "nick name",
+      title: "Only letters and numbers are allowed, minimum 2 in length"
+    },
+    container: signUpLabelName
+  })
+
+  const signUpLabelEmail = createElement({
+    type: 'label',
+    attrs: { for: '' },
+    container: signUpForm
+  })
+
+  createElement({
+    type: 'input',
+    attrs: {
+      class: 'form__input',
+      type: "email",
+      name: "email",
+      placeholder: "email",
+
+
+    },
+    container: signUpLabelEmail
+  })
+  const signUpLabelPassword = createElement({
+    type: 'label',
+    attrs: { for: '' },
+    container: signUpForm
+  })
+
+  createElement({
+    type: 'input',
+    attrs: {
+      class: 'form__input',
+      type: "password",
+      name: "password",
+      placeholder: "password",
+      title: "One upper case,one digit and one lower case English letter",
+    },
+    container: signUpLabelPassword
+  })
+
+  createElement({
+    type: 'button',
+    attrs: {
+      class: 'form__btn',
+      innerHTML: 'Sing Up',
+      type: "submit"
+    },
+    container: signUpForm
+  })
+}
+
 export const createHeader = (data) => {
 
-  const header = document.createElement("header")
-  header.classList.add('header')
-  document.body.prepend(header)
+  const header = createElement({
+    type: 'header',
+    attrs: {
+      class: 'header'
+    },
+    position: 'prepend',
+    container: document.body
+  })
 
-  const headerContainer = document.createElement("div")
-  headerContainer.classList.add("container,container--header")
-  header.appendChild(headerContainer)
+  const headerContainer = createElement({
+    type: 'div',
+    attrs: {
+      class: 'container container--header'
+    },
+    container: header
+  })
 
-  const gameInfo = document.createElement("div")
-  gameInfo.classList.add("game-info")
-  headerContainer.append(gameInfo)
 
-  const gameInfoUser = document.createElement("div")
-  gameInfoUser.classList.add("game-info__user")
-  gameInfo.appendChild(gameInfoUser)
-  gameInfoUser.textContent = `User name: ${data.name}`
+  const gameInfo = createElement({
+    type: 'div',
+    attrs: {
+      class: 'game-info'
+    },
+    container: headerContainer
+  })
 
-  const gameInfoWraper = document.createElement("ul")
-  gameInfoWraper.classList.add("game-info__wraper")
-  gameInfo.appendChild(gameInfoWraper)
+  createElement({
+    type: 'div',
+    attrs: {
+      class: 'game-info__user',
+      innerHTML: `User name: ${data.name}`
+    },
+    container: gameInfo
+  })
 
-  const gameInfoShots = document.createElement("li")
-  gameInfoShots.classList.add("game-info__coins")
-  gameInfoWraper.appendChild(gameInfoShots)
-  gameInfoShots.textContent = `Your shots: ${data.shots}`
+  const gameInfoWraper = createElement({
+    type: 'ul',
+    attrs: {
+      class: 'game-info__wraper',
+    },
+    container: gameInfo
+  })
 
-  const gameInfoLevel = document.createElement("li")
-  gameInfoLevel.classList.add("game-info__level")
-  gameInfoWraper.appendChild(gameInfoLevel)
-  gameInfoLevel.textContent = `Level:  ${data.level}`
+  createElement({
+    type: 'li',
+    attrs: {
+      class: 'game-info__coins',
+      innerHTML: `Your shots: ${data.shots}`
+    },
+    container: gameInfoWraper
+  })
 
-  const gameInfoLife = document.createElement("li")
-  gameInfoLife.classList.add("game-info_life")
-  gameInfoWraper.appendChild(gameInfoLife)
-  gameInfoLife.textContent = `HP: ${data.health}`
+  createElement({
+    type: 'li',
+    attrs: {
+      class: 'game-info__level',
+      innerHTML: `Level: ${data.level}`
+    },
+    container: gameInfoWraper
+  })
+
+  createElement({
+    type: 'li',
+    attrs: {
+      class: 'game-info_life',
+      innerHTML: `HP: ${data.health}`
+    },
+    container: gameInfoWraper
+  })
 
 }
 
@@ -43,75 +321,129 @@ export const createHeader = (data) => {
 export const createHegoes = () => {
   document.body.style.cssText = `background-image: url(image/bg_field_1.jpg); transition: 0.7s;`
 
-  const container = document.createElement("div")
-  container.classList.add('container')
-  document.body.append(container)
+  const container = createElement({
+    type: 'div',
+    attrs: {
+      class: 'container',
+    },
+    container: document.body
+  })
 
-  const hit = document.createElement("div")
-  hit.classList.add('hit')
-  container.appendChild(hit)
+  const hit = createElement({
+    type: 'div',
+    attrs: {
+      class: 'hit',
+    },
+    container,
+  })
 
-  const hitImg = document.createElement("div")
-  hitImg.classList.add('hit__img__wraper')
-  hit.appendChild(hitImg)
+  const hitImg = createElement({
+    type: 'div',
+    attrs: {
+      class: 'hit__img__wraper',
+    },
+    container: hit,
+  })
 
-  const img = document.createElement("img")
-  img.classList.add('hit__img')
-  hitImg.appendChild(img)
-  img.setAttribute('src', 'image/heroes_1.png')
-  img.setAttribute('alt', 'heroes_1.png')
+  createElement({
+    type: 'img',
+    attrs: {
+      class: 'hit__img',
+      src: 'image/heroes_1.png',
+      alt: 'heroes_1.png'
+    },
+    container: hitImg
+  })
 
-  const hitOverlay = document.createElement("div")
-  hitOverlay.classList.add('hit__overlay')
-  hitImg.appendChild(hitOverlay)
+  createElement({
+    type: 'div',
+    attrs: {
+      class: 'hit__overlay',
+    },
+    container: hitImg,
+  })
 
-  const progressHeroes = document.createElement("div")
-  progressHeroes.classList.add('hit-progress')
-  hitImg.appendChild(progressHeroes)
+  const progressHeroes = createElement({
+    type: 'div',
+    attrs: {
+      class: 'hit-progress',
+    },
+    container: hitImg,
+  })
 
-  const heroesLife = document.createElement("div")
-  heroesLife.classList.add('hit-progress__life')
-  progressHeroes.appendChild(heroesLife)
-
+  createElement({
+    type: 'div',
+    attrs: {
+      class: 'hit-progress__life',
+    },
+    container: progressHeroes,
+  })
 }
 
 
 export const createModalWindow = () => {
-  const modal = document.createElement("div")
-  modal.classList.add('modal')
-  document.body.prepend(modal)
+  const modal = createElement({
+    type: 'div',
+    attrs: {
+      class: 'modal',
+    },
+    position: 'prepend',
+    container: document.body,
+  })
 
-  const modalContent = document.createElement("div")
-  modalContent.classList.add('modal__content')
-  modal.appendChild(modalContent)
+  const modalContent = createElement({
+    type: 'div',
+    attrs: {
+      class: 'modal__content',
+    },
+    container: modal,
+  })
 
-  const modalMessage = document.createElement("div")
-  modalMessage.classList.add('content-message')
-  modalContent.appendChild(modalMessage)
+  const modalMessage = createElement({
+    type: 'div',
+    attrs: {
+      class: 'content-message',
+    },
+    container: modalContent,
+  })
 
-  const btnRestart = document.createElement("button")
-  btnRestart.classList.add('btn-restart')
-  modalContent.appendChild(btnRestart)
+  createElement({
+    type: 'button',
+    attrs: {
+      class: 'btn-restart',
+    },
+    container: modalContent,
+  })
 
-  const messageTitle = document.createElement("h2")
-  messageTitle.classList.add('content-message__title')
-  modalMessage.appendChild(messageTitle)
+  createElement({
+    type: 'h2',
+    attrs: {
+      class: 'content-message__title',
+    },
+    container: modalMessage,
+  })
 
-
-  const messageText = document.createElement("p")
-  messageText.classList.add('content-message__text')
-  modalMessage.appendChild(messageText)
+  createElement({
+    type: 'p',
+    attrs: {
+      class: 'content-message__text',
+    },
+    container: modalMessage,
+  })
 
 }
 
 export const creatMiss = () => {
   const wraper = document.querySelector('.hit__img__wraper')
 
-  const missShots = document.createElement("div")
-  missShots.classList.add("miss")
-  wraper.appendChild(missShots)
-  missShots.textContent = `MISS`
-
+  const missShots = createElement({
+    type: 'div',
+    attrs: {
+      class: 'miss',
+      innerHTML: `MISS`
+    },
+    container: wraper,
+  })
   missShots.addEventListener("animationend", () => {
     missShots.remove();
   });

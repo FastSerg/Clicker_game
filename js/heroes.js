@@ -14,23 +14,23 @@ export const removeElement = (element) => {
 const updateBackground = (currentLevel) => {
   const heroes = document.querySelector('.hit__img')
   if (currentLevel === 1 || currentLevel === 0) {
-    document.body.style.cssText = `background-image: url(image/bg_field_1.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_1.jpg)`
     heroes.setAttribute('src', 'image/heroes_1.png')
     heroes.setAttribute('alt', 'heroes_1.jpg')
   } else if (currentLevel === 2) {
-    document.body.style.cssText = `background-image: url(image/bg_field_2.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_2.jpg)`
     heroes.setAttribute('src', 'image/heroes_2.png')
     heroes.setAttribute('alt', 'heroes_2.jpg')
   } else if (currentLevel === 3) {
-    document.body.style.cssText = `background-image: url(image/bg_field_3.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_3.jpg)`
     heroes.setAttribute('src', 'image/heroes_3.png')
     heroes.setAttribute('alt', 'heroes_3.jpg')
   } else if (currentLevel === 4) {
-    document.body.style.cssText = `background-image: url(image/bg_field_4.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_4.jpg)`
     heroes.setAttribute('src', 'image/heroes_4.png')
     heroes.setAttribute('alt', 'heroes_4.jpg')
   } else if (currentLevel === 5) {
-    document.body.style.cssText = `background-image: url(image/bg_field_5.jpg); transition: 0.7s;`
+    document.body.style.cssText = `background-image: url(image/bg_field_5.jpg)`
     heroes.setAttribute('src', 'image/heroes_5.png')
     heroes.setAttribute('alt', 'heroes_5.jpg')
   }
@@ -97,7 +97,7 @@ export const hegoesBattle = (data, key) => {
     data.level = currentInfoUser.level
     data.shots = currentInfoUser.shots
   }
-  console.log('before')
+
   // проверка здоровья, когда оно равно 0 генерируется новое здоровье и обновляется значение на экране
   if (!data.health) {
     data.health = Math.floor(Math.random() * (8 * data.level)) + 4 * data.level
@@ -169,7 +169,5 @@ export const init = (data, key) => {
   createHegoes()
   createModalWindow()
   hegoesBattle(data, key)
-  console.log('init')
-
 }
 

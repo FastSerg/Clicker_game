@@ -23,6 +23,7 @@ export const createUser = () => {
     position: 'prepend',
     container: document.body
   })
+
   const userContainer = createElement({
     type: 'div',
     attrs: {
@@ -30,6 +31,7 @@ export const createUser = () => {
     },
     container: user
   })
+
   const block = createElement({
     type: 'div',
     attrs: {
@@ -180,7 +182,11 @@ export const createUser = () => {
 
   const signUpLabelName = createElement({
     type: 'label',
-    attrs: { for: '' },
+    attrs: {
+      for: '',
+      class: 'nick-name',
+      dataText: "Only letters and numbers are allowed, minimum 2 in length"
+    },
     container: signUpForm
   })
 
@@ -191,7 +197,6 @@ export const createUser = () => {
       type: "text",
       name: "nick-name",
       placeholder: "nick name",
-      title: "Only letters and numbers are allowed, minimum 2 in length"
     },
     container: signUpLabelName
   })
@@ -216,7 +221,11 @@ export const createUser = () => {
   })
   const signUpLabelPassword = createElement({
     type: 'label',
-    attrs: { for: '' },
+    attrs: {
+      for: '',
+      class: "password",
+      dataText: "One upper case,one digit and one lower case English letter",
+    },
     container: signUpForm
   })
 
@@ -227,7 +236,7 @@ export const createUser = () => {
       type: "password",
       name: "password",
       placeholder: "password",
-      title: "One upper case,one digit and one lower case English letter",
+
     },
     container: signUpLabelPassword
   })

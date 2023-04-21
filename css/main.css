@@ -15,6 +15,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transition: 0.7s;
 }
 
 .header {
@@ -170,6 +171,8 @@ body {
   letter-spacing: calc(var(--index) * 0.07);  
 }
 
+
+
 .signIn-form {
   left: 0;
   transition-delay: 0.3s;
@@ -205,6 +208,96 @@ body {
   border-radius:15px;
   border:none;
   font-size: calc(var(--index) * .5);
+}
+
+
+.nick-name {
+  position: relative; 
+}
+
+.password {
+  position: relative; 
+}
+
+.nick-name::before {
+  content:'';
+  position: absolute;
+  top: calc(100% - 5px);
+  left: 50%;
+  width: 0;
+  height: 0; 
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 0 5px 7.5px 5px;
+  border-color: transparent transparent #333333f4 transparent;
+  opacity: 0;
+  visibility: hidden; 
+  z-index: 2; 
+
+}
+
+.nick-name::after {
+  content: attr(dataText);
+  position:absolute;
+  top:  100%  ;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%); 
+  background-color: #333333;
+  color:#f5f5f5;
+  padding: 10px 7px;
+  font-size: 10px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;   
+  border-radius: 15px; 
+  z-index: 2; 
+}
+
+.nick-name:hover::after,
+.nick-name:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.password::before {
+  content:'';
+  position: absolute;
+  top: calc(100% - 5px);
+  left: 50%;
+  width: 0;
+  height: 0; 
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 0 5px 7.5px 5px;
+  border-color: transparent transparent #333333f4 transparent;
+  opacity: 0;
+  visibility: hidden; 
+  z-index: 2; 
+}
+
+.password::after {
+  content: attr(dataText);
+  position:absolute;
+  top:  100%  ;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%); 
+  background-color: #333333;
+  color:#f5f5f5;
+  padding: 10px 7px;
+  font-size: 10px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;   
+  border-radius: 15px; 
+  z-index: 2; 
+}
+
+.password:hover::after,
+.password:hover::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 .form__btn {
